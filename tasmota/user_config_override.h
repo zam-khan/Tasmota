@@ -90,6 +90,8 @@ Examples :
 
 
 #undef TCP_MSS
-#define TCP_MSS 1160
-// Angka 1160 di atas untuk target MTU 1200, silakan ganti sesuai kebutuhan Anda.
+#define TCP_MSS 1024
+
+#undef MQTT_MAX_PACKET_SIZE
+#define MQTT_MAX_PACKET_SIZE 1024
 #endif  // _USER_CONFIG_OVERRIDE_H_
