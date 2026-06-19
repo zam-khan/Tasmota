@@ -20,6 +20,8 @@ jobs:
           pip install -U platformio
 
       - name: Run PlatformIO Build
+        env:
+          PLATFORMIO_BUILD_FLAGS: "-DTCP_MSS=536 -DMQTT_MAX_PACKET_SIZE=512"
         run: |
           platformio run -e tasmota-lite
 
