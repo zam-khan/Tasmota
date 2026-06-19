@@ -13,7 +13,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-python: '3.x'
+          python-version: '3.10'
 
       - name: Install PlatformIO
         run: |
@@ -21,10 +21,4 @@ jobs:
 
       - name: Run PlatformIO Build
         run: |
-          platformio run -e tasmota-lite --project-option="build_flags=-DTCP_MSS=1024"
-
-      - name: Upload Firmware Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: tasmota-lite-custom
-          path: .pio/build/tasmota-lite/firmware.bin
+          platformio run -e tasmota-lite
