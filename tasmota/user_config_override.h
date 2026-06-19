@@ -89,6 +89,7 @@ Examples :
 
 
 
-
-
+#undef TCP_MSS
+#define TCP_MSS 1160
+// Angka 1160 di atas untuk target MTU 1200, silakan ganti sesuai kebutuhan Anda.
 #endif  // _USER_CONFIG_OVERRIDE_H_
