@@ -1,4 +1,4 @@
-name: Build Tasmota Lite Custom
+name: Build Tasmota v9.3.1 Lawas
 
 on:
   workflow_dispatch:
@@ -7,26 +7,27 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
+      - name: Checkout Tasmota v9.3.1
         uses: actions/checkout@v4
+        with:
+          repository: ARENDST/Tasmota
+          ref: 'v9.3.1'
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.9'
 
       - name: Install PlatformIO
         run: |
           pip install -U platformio
 
       - name: Run PlatformIO Build
-        env:
-          PLATFORMIO_BUILD_FLAGS: "-DTCP_MSS=536 -DMQTT_MAX_PACKET_SIZE=512"
         run: |
           platformio run -e tasmota-lite
 
       - name: Upload Firmware Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: tasmota-lite-custom
+          name: tasmota-v931-custom
           path: .pio/build/tasmota-lite/firmware.bin
